@@ -1,0 +1,35 @@
+--- netrw_before.vim	2020-04-30 13:12:10.225394138 +0900
++++ netrw.vim	2020-04-30 13:03:50.746727412 +0900
+@@ -4899,9 +4899,19 @@
+      " some like c-^ to return to the last edited file
+      " others like c-^ to return to the netrw buffer
+      if exists("g:netrw_altfile") && g:netrw_altfile
+-      exe "NetrwKeepj keepalt e! ".fnameescape(dirname)
++      try
++       exe "NetrwKeepj keepalt e ".fnameescape(dirname)
++      catch
++       echoerr "No write since last change"
++       let __local_file_opening_error = 1
++      endtry
+      else
+-      exe "NetrwKeepj e! ".fnameescape(dirname)
++      try
++       exe "NetrwKeepj e ".fnameescape(dirname)
++      catch
++       echoerr "No write since last change"
++       let __local_file_opening_error = 1
++      endtry
+      endif
+ "     call Decho("edit-a-file: after e! ".dirname.": hidden=".&hidden." bufhidden<".&bufhidden."> mod=".&mod,'~'.expand("<slnum>"))
+      call s:NetrwCursor()
+@@ -4912,7 +4922,9 @@
+     else
+ "     call Decho("edit-a-file: remote file: NetrwBrowse will edit it",'~'.expand("<slnum>"))
+     endif
+-    let dolockout= 1
++    if !exists("__local_file_opening_error")
++     let dolockout= 1
++    endif
+ 
+     " handle g:Netrw_funcref -- call external-to-netrw functions
+     "   This code will handle g:Netrw_funcref as an individual function reference

@@ -1,0 +1,3 @@
+set nocp
+so $HOME/.vim/plugin/Decho.vim
+so $HOME/.vim/plugin/netrwPlugin.vim
