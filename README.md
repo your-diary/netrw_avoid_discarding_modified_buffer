@@ -65,7 +65,7 @@ The patch follows the algorithm below.
 
 The way of debugging `netrw` is described in `:help netrw` but it is far from complete. Here is the more detailed instructions.
 
-1. Install the latest [`Netrw`](http://www.drchip.org/astronaut/vim/index.html#NETRW) and [`Decho`](http://www.drchip.org/astronaut/vim/index.html#DECHO), where the latter is a debugging plugin. To install them, download `.vbs.gz` files from the links, open each in vim, and execute `:source %` command. By this, plugins are installed under `~/.vim/`. (To uninstall them, just delete appropriate files under the directory.)
+1. Install the latest [`Netrw`](http://www.drchip.org/astronaut/vim/index.html#NETRW) and [`Decho`](http://www.drchip.org/astronaut/vim/index.html#DECHO), where the latter is a debugging plugin. To install them, download `.vbs.gz` files from the links, open each in vim, and execute `:source %` command. By this, plugins are installed under `~/.vim/`. Or you may want instead to execute `:UseVimball <destination path>` command to extract the contents to the specified directory. (To uninstall them, just delete appropriate files under the directory. `:RmVimball` command didn't work.)
 
 2. Create a minimal configuration file `minimal_vimrc` whose contents are shown below. This file is included in this project.
 
@@ -77,7 +77,7 @@ so $HOME/.vim/plugin/netrwPlugin.vim
 
 3. Open `~/.vim/plugin/netrwPlugin.vim` and `~/.vim/autoload/netrw.vim` in `vim` and execute `:DechoOn`, then save and exit. This turns on debugging outputs.
 
-4. Execute the following command to start debugging.
+4. Execute the following command to start debugging. We also provide the script `start_debugging.sh`, where `./start_debugging.sh [<file>]` is essentially the same as the command below.
 
 ```bash
 $ vim -u minimal_vimrc --noplugins -i NONE [<file>]
