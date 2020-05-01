@@ -65,7 +65,11 @@ The patch follows the algorithm below.
 
 The way of debugging `netrw` is described in `:help netrw` but it is far from complete. Here is the more detailed instructions.
 
-1. Install the latest [`Netrw`](http://www.drchip.org/astronaut/vim/index.html#NETRW) and [`Decho`](http://www.drchip.org/astronaut/vim/index.html#DECHO), where the latter is a debugging plugin. To install them, download `.vbs.gz` files from the links, open each in vim, and execute `:source %` command. By this, plugins are installed under `~/.vim/`. Or you may want instead to execute `:UseVimball <destination path>` command to extract the contents to the specified directory. (To uninstall them, just delete appropriate files under the directory. `:RmVimball` command didn't work.)
+1. Install the latest [`Netrw`](http://www.drchip.org/astronaut/vim/index.html#NETRW) and [`Decho`](http://www.drchip.org/astronaut/vim/index.html#DECHO), where the latter is a debugging plugin. To install them, download `.vba.gz` files from the links and follow either the following ways.
+    
+    - Open each file in vim, and execute `:source %` command or `:UseVimball ~/.vim/` command. By this, the plugins are installed under `~/.vim/`. To uninstall them, just delete appropriate files under the directory. In this case, `:RmVimball` command doesn't work unless you manually remove the part `.gz` from the contents of `~/.vim/.VimballRecord` file.
+
+    - *(Recommended)* Execute `gunzip --keep <vba.gz file>` command to get `*.vba` files, open each in vim, and execute `:source %` command or `:UseVimball ~/.vim/` command. By this, the plugins are installed under `~/.vim/`. To uninstall them, execute `:RmVimball <plugin> ~/.vim/` command, where `<plugin>` is the name of the file used to install the plugin minus the extension `.vba` (e.g. `netrw_170e` for `netrw_170e.vba`).
 
 2. Create a minimal configuration file `minimal_vimrc` whose contents are shown below. This file is included in this project.
 
