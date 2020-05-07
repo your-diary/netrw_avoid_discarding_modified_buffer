@@ -1,3 +1,25 @@
+# About
+
+## About
+
+This project supplies a patch for a bug of [*netrw*](https://www.vim.org/scripts/script.php?script_id=1075). The bug is explained in [Problem](#problem) section.
+
+## Current Status
+
+The patch was partially adopted in `netrw 170e` and fully adopted in `netrw 170f` on April 30, 2020. Now the documentation `pi_netrw.txt` says
+
+```
+v170:   Mar 11, 2020   ...
+        Apr 13, 2020   ...
+        Apr 30, 2020   * (reported by Manatsu Takahashi) while
+                         using Lexplore, a modified file could
+                         be overwritten.  Sol'n: will not overwrite,
+                         but will emit an |E37| (although one cannot
+                         add an ! to override)
+```
+
+However, I suspect it will take long for the version of `netrw` to be included in the upstream of `vim`. Till the day, if you'd like to remove the bug, manually download the plugin from the [official](http://www.drchip.org/astronaut/vim/index.html#NETRW) and install it.
+
 # For Users
 
 ## Problem
